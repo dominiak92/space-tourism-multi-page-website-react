@@ -96,6 +96,10 @@
     justify-content: center;
     border-bottom: 1px solid #383b4b;
     margin-top: 32px;
+    & .image{
+      height: 100%;
+      width: auto;
+    }
     @include md {
       width: 456px;
       height: 572px;
