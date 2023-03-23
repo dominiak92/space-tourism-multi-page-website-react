@@ -22,9 +22,10 @@ const Destination = () => {
   };
 
   const transitions = useTransition(clicked, {
-    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 1000 }
   });
 
   const scale = useTransition(clicked, {
@@ -82,20 +83,20 @@ const Destination = () => {
           <div className={styles.description__line}></div>
           <div className={styles.description__wrapper}>
           <div className={styles.distance}>
-          {fadeIn((style, i) =>
+          {transitions((style, i) =>
             i === clicked &&
             <animated.p style={style} className={styles.description__smallTitle}>AVG. DISTANCE</animated.p>
           )}
-          {fadeIn((style, i) =>
+          {transitions((style, i) =>
             i === clicked &&
             <animated.p style={style} className={styles.description__information}>{planet.distance}</animated.p>
           )}</div>
           <div className={styles.travel}>
-          {fadeIn((style, i) =>
+          {transitions((style, i) =>
             i === clicked &&
             <animated.p style={style} className={styles.description__smallTitle}>EST. TRAVEL TIME</animated.p>
           )}
-          {fadeIn((style, i) =>
+          {transitions((style, i) =>
             i === clicked &&
             <animated.p style={style} className={styles.description__information}>{planet.travel}</animated.p>
           )}</div></div>

@@ -1,8 +1,10 @@
 .hamburgerMenu {
-  position: absolute;
-  transform: translate(101vw, 372px); /* wartość początkowa */
-  width: 454px;
-  height: 865px;
+  position: fixed;
+  width: 254px;
+  height: 867px;
+  left: auto;
+  right: 0;
+  top: 0px;
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(40.7742px);
   transition: 0.2s all linear;
@@ -34,9 +36,6 @@
     }
   }
 }
-.open {
-  transform: translate(40vw, 372px);
-}
 .hamburgerOpen {
   transition: opacity 0.5s ease-out;
   display: block;
@@ -47,15 +46,15 @@
 }
 
 .hamburgerClose {
-    cursor:pointer;
-    position: absolute;
-    top: 8vw;
-    left: 44vw;
+  cursor: pointer;
+  position: absolute;
+  left: auto;
+  right: 24px;
+  top: 30px;
   z-index: 1;
   transition: opacity 0.5s ease-out;
   display: block;
   &.hide {
     opacity: 0;
-
   }
 }

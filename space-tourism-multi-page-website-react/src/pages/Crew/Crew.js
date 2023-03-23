@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { useSpring, useTransition, animated } from 'react-spring';
+import { useSpring, config, useTransition, animated } from 'react-spring';
 import styles from "./Crew.module.scss";
 import douglasImg from "./crew-images/image-douglas-hurley.png";
 import data from "../../data.json";
@@ -19,15 +19,22 @@ const Crew = () => {
   const [clicked, setClicked] = useState(0);
 
   const transitions = useTransition(clicked, {
-    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 1000 }
   });
 
   const fadeIn = useTransition(clicked, {
-    from: { opacity: 0},
-    enter: { opacity: 1},
-    leave: { opacity: 0},
+    from: {
+      clipPath: 'polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%)',
+    },
+    enter: {
+      clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)',
+    },
+    leave: {
+      clipPath: 'polygon(100% 0%, 100% 100%, 100% 100%, 100% 0%)',
+    },
   })
 
   const fadePage = useSpring({
